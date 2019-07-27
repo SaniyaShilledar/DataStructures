@@ -1,0 +1,135 @@
+
+
+import java.util.Scanner;
+
+public class StackImplementation {
+	static int top = -1;
+	static int size;
+	static int a[];
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StackImplementation o = new StackImplementation();
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Eneter size:");
+		size = kb.nextInt();
+		o.create(size);
+
+		int ch;
+		while (true) {
+			System.out.println("Enter 1 for PUSH");
+			System.out.println("Enter 2 for POP");
+			System.out.println("Enter 3 for PEEK");
+			System.out.println("Enter 4 for TRAVERSE");
+			System.out.println("Enter 5  Exit");
+
+			System.out.println("Enter your choise:");
+			ch = kb.nextInt();
+
+			switch (ch)
+
+			{
+			case 1:
+				System.out.println("Enter elementto push");
+				int p = kb.nextInt();
+				push(p);
+				break;
+
+			case 2:
+				int popItem = pop();
+				System.out.println(popItem + " value popped");
+				break;
+
+			case 3:
+				int peepItem = pop();
+				System.out.println(peepItem + " value peeked");
+				peek();
+				break;
+
+			case 4:
+				traverse();
+				break;
+
+			case 5:
+				quit();
+				break;
+
+			default:
+				System.out.println("Invalid choice");
+			}
+
+		}
+	}
+
+	public void create(int size) {
+		// TODO Auto-generated method stub
+		a = new int[size];
+		System.out.println("Stack is created");
+
+	}
+
+	public static void quit() {
+		// TODO Auto-generated method stub
+		System.exit(0);
+	}
+
+	public static void push(int p) {
+		// TODO Auto-generated method stub
+		if (isFull()) {
+			System.out.println("stack is full");
+		} else {
+			a[++top] = p;
+		}
+
+	}
+
+	public static boolean isFull() {
+
+		if (top == (size - 1))
+			return true;
+
+		else
+			return false;
+	}
+
+	public static int pop() {
+		// TODO Auto-generated method stub
+		if (isEmpty()) {
+			return 0;
+		} else {
+			return a[top--];
+		}
+
+	}
+
+	public static boolean isEmpty() {
+		// TODO Auto-generated method stub
+		if (top == -1)
+			return true;
+		else
+			return false;
+	}
+
+	public static int peek() {
+		// TODO Auto-generated method stub
+		if (isEmpty()) {
+			return 0;
+		} else {
+			return a[top];
+		}
+
+	}
+
+	public static void traverse() {
+		// TODO Auto-generated method stub
+		if (isEmpty()) {
+			System.out.println("Stack is empty");
+		} else {
+			for (int i = top; i >= 0; i--) {
+				System.out.println(a[i]);
+			}
+		}
+
+	}
+
+}
